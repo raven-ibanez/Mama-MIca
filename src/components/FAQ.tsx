@@ -1,5 +1,5 @@
 
-const faqs: Array<{ question: string; answer: string }> = [
+export const faqs: Array<{ question: string; answer: string }> = [
   {
     question: 'How much is the shipping fee?',
     answer: 'The shipping fee is $45 (around ₱2,622.15 at a rate of ₱58.21 = $1). This covers up to four (4) boxes only/up to 3 peptides + 1 BAC water.',
@@ -90,7 +90,7 @@ export default function FAQ(): JSX.Element {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-purple-300 bg-gradient-purple">
-              <img src="/logo.png" alt="Mama Mica GLW" className="w-full h-full object-cover" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }} />
+              <img src="/logo.jpg" alt="Mama Mica GLW" className="w-full h-full object-cover" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }} />
             </div>
             <div>
               <div className="text-xl font-bold text-gradient-purple">Mama Mica GLW</div>
