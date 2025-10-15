@@ -2,14 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Ramen Yard Custom Styles */
-/* Minimal helpers for ramen palette when needed outside tailwind tokens */
-.bg-ramen-cream { background-color: #FFF3E0; }
-.bg-ramen-beige { background-color: #F7E7CE; }
-.text-ramen-red { color: #D7263D; }
-.text-ramen-dark { color: #0B0A0A; }
-.border-ramen-sesame { border-color: #D1C7B7; }
-.ring-ramen-gold { --tw-ring-color: #E0A106; }
+/* Mama Mica GLW Custom Styles */
+/* Purple theme inspired by infographic design */
+.bg-gradient-purple { 
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%); 
+}
+.bg-gradient-purple-light { 
+  background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%); 
+}
+.text-gradient-purple {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.shadow-purple { 
+  box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.1), 0 10px 10px -5px rgba(124, 58, 237, 0.04); 
+}
+.shadow-purple-lg { 
+  box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.25); 
+}
 
 /* Hide scrollbar for mobile nav */
 .scrollbar-hide {
