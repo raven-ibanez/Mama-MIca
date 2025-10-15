@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { faqs } from './FAQ';
+import { useFaqs } from '../hooks/useFaqs';
 
 type Message = { role: 'user' | 'bot'; text: string; title?: string };
 
@@ -8,6 +8,7 @@ function normalize(text: string): string {
 }
 
 export default function ChatBot(): JSX.Element {
+  const { faqs } = useFaqs();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([
@@ -16,7 +17,7 @@ export default function ChatBot(): JSX.Element {
 
   const index = useMemo(() => {
     return faqs.map((f, i) => ({ i, q: normalize(f.question), a: normalize(f.answer), full: normalize(`${f.question} ${f.answer}`), raw: f }));
-  }, []);
+  }, [faqs]);
 
   const keywordBoost: Record<string, number> = {
     shipping: 3, fee: 2, cost: 1, delivery: 2, weeks: 1,
@@ -100,7 +101,7 @@ export default function ChatBot(): JSX.Element {
                     ? 'inline-block bg-purple-600 text-white px-3 py-2 rounded-xl'
                     : 'inline-block bg-purple-50 text-purple-900 px-3 py-2 rounded-xl border border-purple-200'
                 }>
-                  {m.text}
+                  <div className="whitespace-pre-line">{m.text}</div>
                 </div>
               </div>
             ))}
