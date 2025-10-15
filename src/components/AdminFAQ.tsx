@@ -273,17 +273,17 @@ const AdminFAQ: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-purple-light py-8">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-2xl shadow-purple-lg p-8">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h1 className="text-4xl font-bold text-gradient-purple">FAQ Admin Dashboard</h1>
-              <p className="text-purple-600 mt-2">Manage your frequently asked questions</p>
+    <div className="min-h-screen bg-gradient-purple-light py-4 sm:py-8 overflow-x-hidden">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-8 w-full">
+        <div className="bg-white rounded-2xl shadow-purple-lg p-4 sm:p-6 lg:p-8 w-full">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4 w-full">
+            <div className="min-w-0 flex-1">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gradient-purple break-words">FAQ Admin Dashboard</h1>
+              <p className="text-purple-600 mt-1 sm:mt-2 text-sm sm:text-base">Manage your frequently asked questions</p>
             </div>
             <a 
               href="/" 
-              className="bg-purple-600 text-white px-6 py-3 rounded-xl hover:bg-purple-700 transition-colors"
+              className="bg-purple-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl hover:bg-purple-700 transition-colors text-sm sm:text-base text-center flex-shrink-0"
             >
               ← Back to FAQ
             </a>
@@ -302,8 +302,8 @@ const AdminFAQ: React.FC = () => {
           )}
 
           {/* Add New FAQ */}
-          <section className="rounded-2xl border-2 border-purple-200 bg-purple-50 p-6 mb-8">
-            <h2 className="text-xl font-semibold mb-4 text-purple-800">Add New FAQ</h2>
+          <section className="rounded-2xl border-2 border-purple-200 bg-purple-50 p-4 sm:p-6 mb-6 sm:mb-8">
+            <h2 className="text-lg sm:text-xl font-semibold mb-4 text-purple-800">Add New FAQ</h2>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-purple-700 mb-2">Question</label>
@@ -312,7 +312,7 @@ const AdminFAQ: React.FC = () => {
                   value={newQuestion}
                   onChange={(e) => setNewQuestion(e.target.value)}
                   disabled={!isSupabaseConfigured}
-                  className="w-full px-4 py-3 border border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                   placeholder="Enter the question..."
                 />
               </div>
@@ -321,16 +321,16 @@ const AdminFAQ: React.FC = () => {
                 <textarea
                   value={newAnswer}
                   onChange={(e) => setNewAnswer(e.target.value)}
-                  rows={4}
+                  rows={3}
                   disabled={!isSupabaseConfigured}
-                  className="w-full px-4 py-3 border border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base resize-none"
                   placeholder="Enter the answer..."
                 />
               </div>
               <button
                 onClick={createFaq}
                 disabled={!isSupabaseConfigured || saving || !newQuestion.trim() || !newAnswer.trim()}
-                className="bg-purple-600 text-white px-6 py-3 rounded-xl hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto bg-purple-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
               >
                 {saving ? 'Adding...' : 'Add FAQ'}
               </button>
@@ -338,68 +338,68 @@ const AdminFAQ: React.FC = () => {
           </section>
 
           {/* All FAQs */}
-          <section className="rounded-2xl border-2 border-purple-200 bg-white p-6">
-            <h2 className="text-xl font-semibold mb-4">All FAQs</h2>
+          <section className="rounded-2xl border-2 border-purple-200 bg-white p-4 sm:p-6">
+            <h2 className="text-lg sm:text-xl font-semibold mb-4">All FAQs</h2>
             {loading ? (
-              <div className="text-center py-8">Loading...</div>
+              <div className="text-center py-8 text-sm sm:text-base">Loading...</div>
             ) : faqs.length === 0 ? (
               <div className="text-center py-8 text-gray-600">
-                <div className="mb-4">No FAQs yet.</div>
+                <div className="mb-4 text-sm sm:text-base">No FAQs yet.</div>
                 <button
                   onClick={seedFromLocal}
                   disabled={saving}
-                  className="bg-purple-600 text-white px-6 py-3 rounded-xl hover:bg-purple-700 disabled:opacity-50"
+                  className="w-full sm:w-auto bg-purple-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl hover:bg-purple-700 disabled:opacity-50 text-sm sm:text-base"
                 >
                   {saving ? 'Importing...' : 'Import Default FAQs'}
                 </button>
               </div>
             ) : (
               <>
-                <div className="mb-6 flex gap-3">
+                <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row gap-2 sm:gap-3">
                   <button
                     onClick={seedFromLocal}
                     disabled={saving}
-                    className="bg-purple-600 text-white px-4 py-2 rounded-xl hover:bg-purple-700 disabled:opacity-50"
+                    className="flex-1 sm:flex-none bg-purple-600 text-white px-3 sm:px-4 py-2 rounded-xl hover:bg-purple-700 disabled:opacity-50 text-sm sm:text-base"
                   >
                     {saving ? 'Importing...' : 'Re-import FAQs'}
                   </button>
                   <button
                     onClick={clearAllFaqs}
                     disabled={saving}
-                    className="bg-red-600 text-white px-4 py-2 rounded-xl hover:bg-red-700 disabled:opacity-50"
+                    className="flex-1 sm:flex-none bg-red-600 text-white px-3 sm:px-4 py-2 rounded-xl hover:bg-red-700 disabled:opacity-50 text-sm sm:text-base"
                   >
                     Clear All
                   </button>
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4 w-full">
                   {faqs.map((faq, idx) => (
-                    <div key={faq.id} className="border border-purple-200 rounded-xl p-4 bg-purple-50">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
+                    <div key={faq.id} className="border border-purple-200 rounded-xl p-3 sm:p-4 bg-purple-50 w-full">
+                      <div className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 w-full">
+                        <div className="flex-1 min-w-0 w-full">
                           {editingId === faq.id ? (
                             <div className="space-y-3">
                               <input
                                 type="text"
                                 value={editQuestion}
                                 onChange={(e) => setEditQuestion(e.target.value)}
-                                className="w-full px-3 py-2 border border-purple-300 rounded-lg"
+                                className="w-full px-3 py-2 border border-purple-300 rounded-lg text-sm sm:text-base"
                               />
                               <textarea
                                 value={editAnswer}
                                 onChange={(e) => setEditAnswer(e.target.value)}
                                 rows={3}
-                                className="w-full px-3 py-2 border border-purple-300 rounded-lg"
+                                className="w-full px-3 py-2 border border-purple-300 rounded-lg text-sm sm:text-base resize-none"
                               />
-                              <div className="flex gap-2">
+                              <div className="flex flex-col sm:flex-row gap-2">
                                 <button
                                   onClick={() => updateFaq(faq.id)}
-                                  className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+                                  className="flex-1 bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 text-sm sm:text-base"
                                 >
                                   Save
                                 </button>
                                 <button
                                   onClick={cancelEdit}
-                                  className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
+                                  className="flex-1 bg-gray-500 text-white px-3 py-2 rounded-lg hover:bg-gray-600 text-sm sm:text-base"
                                 >
                                   Cancel
                                 </button>
@@ -407,9 +407,9 @@ const AdminFAQ: React.FC = () => {
                             </div>
                           ) : (
                             <div>
-                              <h3 className="font-semibold text-purple-800 mb-2">{faq.question}</h3>
-                              <p className="text-gray-700 whitespace-pre-line">{faq.answer}</p>
-                              <div className="flex items-center gap-2 mt-2">
+                              <h3 className="font-semibold text-purple-800 mb-2 text-sm sm:text-base leading-tight">{faq.question}</h3>
+                              <p className="text-gray-700 whitespace-pre-line text-sm sm:text-base leading-relaxed">{faq.answer}</p>
+                              <div className="flex flex-wrap items-center gap-2 mt-2">
                                 <span className={`px-2 py-1 rounded-full text-xs ${
                                   faq.is_active 
                                     ? 'bg-green-100 text-green-800' 
@@ -423,44 +423,48 @@ const AdminFAQ: React.FC = () => {
                           )}
                         </div>
                         {editingId !== faq.id && (
-                          <div className="flex flex-col gap-2">
-                            <button
-                              onClick={() => startEdit(faq)}
-                              className="bg-blue-600 text-white px-3 py-1 rounded-lg hover:bg-blue-700 text-sm"
-                            >
-                              Edit
-                            </button>
-                            <button
-                              onClick={() => toggleActive(faq.id, faq.is_active)}
-                              className={`px-3 py-1 rounded-lg text-sm ${
-                                faq.is_active
-                                  ? 'bg-yellow-600 text-white hover:bg-yellow-700'
-                                  : 'bg-green-600 text-white hover:bg-green-700'
-                              }`}
-                            >
-                              {faq.is_active ? 'Deactivate' : 'Activate'}
-                            </button>
-                            <button
-                              onClick={() => removeFaq(faq.id)}
-                              className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 text-sm"
-                            >
-                              Delete
-                            </button>
-                            <div className="flex flex-col gap-1">
+                          <div className="flex flex-col sm:flex-col gap-2 sm:gap-2 flex-shrink-0">
+                            <div className="flex gap-2 sm:flex-col">
                               <button
-                                onClick={() => move(idx, -1)}
-                                disabled={idx === 0}
-                                className="bg-gray-600 text-white px-2 py-1 rounded text-xs hover:bg-gray-700 disabled:opacity-50"
+                                onClick={() => startEdit(faq)}
+                                className="flex-1 sm:w-full bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 text-xs sm:text-sm whitespace-nowrap"
                               >
-                                ↑
+                                Edit
                               </button>
                               <button
-                                onClick={() => move(idx, 1)}
-                                disabled={idx === faqs.length - 1}
-                                className="bg-gray-600 text-white px-2 py-1 rounded text-xs hover:bg-gray-700 disabled:opacity-50"
+                                onClick={() => toggleActive(faq.id, faq.is_active)}
+                                className={`flex-1 sm:w-full px-3 py-2 rounded-lg text-xs sm:text-sm whitespace-nowrap ${
+                                  faq.is_active
+                                    ? 'bg-yellow-600 text-white hover:bg-yellow-700'
+                                    : 'bg-green-600 text-white hover:bg-green-700'
+                                }`}
                               >
-                                ↓
+                                {faq.is_active ? 'Deactivate' : 'Activate'}
                               </button>
+                            </div>
+                            <div className="flex gap-2 sm:flex-col">
+                              <button
+                                onClick={() => removeFaq(faq.id)}
+                                className="flex-1 sm:w-full bg-red-600 text-white px-3 py-2 rounded-lg hover:bg-red-700 text-xs sm:text-sm whitespace-nowrap"
+                              >
+                                Delete
+                              </button>
+                              <div className="flex gap-1 sm:flex-col">
+                                <button
+                                  onClick={() => move(idx, -1)}
+                                  disabled={idx === 0}
+                                  className="bg-gray-600 text-white px-2 py-1 rounded text-xs hover:bg-gray-700 disabled:opacity-50"
+                                >
+                                  ↑
+                                </button>
+                                <button
+                                  onClick={() => move(idx, 1)}
+                                  disabled={idx === faqs.length - 1}
+                                  className="bg-gray-600 text-white px-2 py-1 rounded text-xs hover:bg-gray-700 disabled:opacity-50"
+                                >
+                                  ↓
+                                </button>
+                              </div>
                             </div>
                           </div>
                         )}

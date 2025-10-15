@@ -76,7 +76,7 @@ export default function ChatBot(): JSX.Element {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed bottom-6 right-6 bg-gradient-purple text-white px-5 py-4 rounded-full shadow-purple-lg hover:scale-110 transition md:bottom-8 md:right-8"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-gradient-purple text-white px-4 py-3 sm:px-5 sm:py-4 rounded-full shadow-purple-lg hover:scale-110 transition text-sm sm:text-base"
           aria-label="Open chat"
         >
           Chat
@@ -85,12 +85,12 @@ export default function ChatBot(): JSX.Element {
 
       {/* Panel */}
       {open && (
-        <div className="fixed bottom-6 right-6 w-[90vw] max-w-sm bg-white rounded-2xl border-2 border-purple-200 shadow-purple-lg overflow-hidden md:bottom-8 md:right-8">
-          <div className="flex items-center justify-between px-4 py-3 bg-gradient-purple text-white">
-            <div className="font-bold">Mama Mica GLW — FAQ Bot</div>
-            <button onClick={() => setOpen(false)} className="text-white/90 hover:text-white">✕</button>
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-[90vw] max-w-sm bg-white rounded-2xl border-2 border-purple-200 shadow-purple-lg overflow-hidden">
+          <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 bg-gradient-purple text-white">
+            <div className="font-bold text-sm sm:text-base">Mama Mica GLW — FAQ Bot</div>
+            <button onClick={() => setOpen(false)} className="text-white/90 hover:text-white text-lg">✕</button>
           </div>
-          <div className="max-h-80 overflow-y-auto px-4 py-3 space-y-3">
+          <div className="max-h-60 sm:max-h-80 overflow-y-auto px-3 sm:px-4 py-2 sm:py-3 space-y-2 sm:space-y-3">
             {messages.map((m, idx) => (
               <div key={idx} className={m.role === 'user' ? 'text-right' : 'text-left'}>
                 {m.title && (
@@ -98,22 +98,22 @@ export default function ChatBot(): JSX.Element {
                 )}
                 <div className={
                   m.role === 'user'
-                    ? 'inline-block bg-purple-600 text-white px-3 py-2 rounded-xl'
-                    : 'inline-block bg-purple-50 text-purple-900 px-3 py-2 rounded-xl border border-purple-200'
+                    ? 'inline-block bg-purple-600 text-white px-3 py-2 rounded-xl max-w-[85%]'
+                    : 'inline-block bg-purple-50 text-purple-900 px-3 py-2 rounded-xl border border-purple-200 max-w-[85%]'
                 }>
-                  <div className="whitespace-pre-line">{m.text}</div>
+                  <div className="whitespace-pre-line text-sm sm:text-base">{m.text}</div>
                 </div>
               </div>
             ))}
           </div>
-          <form onSubmit={onSend} className="flex items-center gap-2 p-3 border-t border-purple-200">
+          <form onSubmit={onSend} className="flex items-center gap-2 p-2 sm:p-3 border-t border-purple-200">
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your question..."
-              className="flex-1 rounded-xl border-2 border-purple-200 px-3 py-2 focus:outline-none focus:border-purple-400"
+              className="flex-1 rounded-xl border-2 border-purple-200 px-2 sm:px-3 py-1.5 sm:py-2 focus:outline-none focus:border-purple-400 text-sm sm:text-base"
             />
-            <button type="submit" className="bg-purple-600 text-white px-4 py-2 rounded-xl hover:bg-purple-700">Send</button>
+            <button type="submit" className="bg-purple-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl hover:bg-purple-700 text-sm sm:text-base">Send</button>
           </form>
         </div>
       )}
